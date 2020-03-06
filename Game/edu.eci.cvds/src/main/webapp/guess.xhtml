@@ -18,7 +18,7 @@ and open the template in the editor.
             <p:inputText type="number" id="numero" value="#{guessBean.intentar}">
             </p:inputText>
         
-            <p:commandButton value ="Adivinar" actionListener="#{guessBean.guess(guessBean.intentado)}" update="guess_form" ></p:commandButton>
+            <p:commandButton value ="Adivinar" actionListener="#{guessBean.guess(guessBean.intentar)}" update="guess_form" ></p:commandButton>
             <p:commandButton value="Reiniciar"  actionListener="#{guessBean.restart}" update="guess_form"></p:commandButton>
         </h:form>
         
