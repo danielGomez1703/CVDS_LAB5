@@ -14,10 +14,11 @@ and open the template in the editor.
         <h:form id="guess_form">
             <h2 style="display:none"> la correcta es </h2>
             <p:outputLabel  value="#{guessBean.numero}" style="display: none"></p:outputLabel>
+     
             <h2> ingrese su numero  </h2>
             <p:inputText type="number" id="numero" value="#{guessBean.intentar}">
             </p:inputText>
-        
+            <br></br>
             <p:commandButton value ="Adivinar" actionListener="#{guessBean.guess(guessBean.intentar)}" update="guess_form" ></p:commandButton>
             <p:commandButton value="Reiniciar"  actionListener="#{guessBean.restart}" update="guess_form"></p:commandButton>
         </h:form>
