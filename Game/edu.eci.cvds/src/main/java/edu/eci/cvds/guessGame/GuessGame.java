@@ -26,6 +26,7 @@ public class GuessGame {
     private int intento;
     private int puntaje;
     private int perdidos;
+    private int intentar;
     private String estado;
     
     public GuessGame() {
@@ -37,10 +38,19 @@ public class GuessGame {
 
     }
 
+    public int getIntentar() {
+        return intentar;
+    }
 
-        public void guess ( int validar){
+    public void setIntentar(int intentar) {
+        this.intentar = intentar;
+    }
+
+
+    public void guess ( int validar){
             intento++;
             estado = "no gano";
+            intentar = validar;
             if (numero == validar) {
                 puntaje = 100000 - (perdidos * intento);
                 if (puntaje < 0) {
