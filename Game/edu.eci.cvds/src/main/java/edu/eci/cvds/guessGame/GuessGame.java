@@ -7,9 +7,10 @@ package edu.eci.cvds.guessGame;
 
 import java.util.ArrayList;
 import java.util.Random;
-import javax.enterprise.context.SessionScoped;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "guessBean")
@@ -28,6 +29,7 @@ public class GuessGame {
     private int perdidos;
     private int intentar;
     private String estado;
+    private ArrayList intentos;
     
     public GuessGame() {
         numero = new Random().nextInt(100);
@@ -35,7 +37,16 @@ public class GuessGame {
         puntaje = 0;
         perdidos = 10000;
         estado = "inicio";
+        intentos = new ArrayList<Integer> ();
 
+    }
+
+    public ArrayList getIntentos() {
+        return intentos;
+    }
+
+    public void setIntentos(ArrayList intentos) {
+        this.intentos = intentos;
     }
 
     public int getIntentar() {
@@ -49,8 +60,13 @@ public class GuessGame {
 
     public void guess ( int validar){
             intento++;
-            estado = "no gano";
             intentar = validar;
+            estado = "no gano";
+            System.out.println(validar);
+            if (!intentos.contains(validar)){
+                intentos.add(validar);
+            }
+            
             if (numero == validar) {
                 puntaje = 100000 - (perdidos * intento);
                 if (puntaje < 0) {
@@ -59,7 +75,6 @@ public class GuessGame {
                 } else {
                     estado = "gano";
                 }
-
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Has Adivinado el Numero de la ronda anterior!, tu puntaje fue: ", " " + puntaje+ " y con una cantidad de " + intento + " intentos ;) El juego se Ha reiniciado "));
                 restart();
             } else {
@@ -73,7 +88,7 @@ public class GuessGame {
         numero = new Random().nextInt(100);
         intento = 0;
         puntaje = 0;
-        perdidos = 10000;
+        perdidos = 100000;
         estado = "inicio";
 
     }

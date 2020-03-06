@@ -16,11 +16,20 @@ and open the template in the editor.
             <p:outputLabel  value="#{guessBean.numero}" style="display: none"></p:outputLabel>
      
             <h2> ingrese su numero  </h2>
-            <p:inputText type="number" id="numero" value="#{guessBean.intentar}">
+            <p:inputText type="int" id="num" value="#{guessBean.intentar}"  binding="#{input}">
             </p:inputText>
             <br></br>
-            <p:commandButton value ="Adivinar" actionListener="#{guessBean.guess(guessBean.intentar)}" update="guess_form" ></p:commandButton>
+            <p:commandButton value ="Adivinar" actionListener="#{guessBean.guess(input.value)}" update="guess_form" ></p:commandButton>
             <p:commandButton value="Reiniciar"  actionListener="#{guessBean.restart}" update="guess_form"></p:commandButton>
+        
+            <p:dataTable var="listintentos" value="#{guessBean.intentos}" style="width:250px;" styleClass = "Table" >
+                <p:column headerText="numero de intentos " >
+                    <h:outputText value= "#{guessBean.intento}" />
+                </p:column>
+                <p:column headerText="numero ingresado"  >
+                    <h:outputText value= "#{guessBean.intentar}" />
+                </p:column>
+            </p:dataTable>
         </h:form>
         
         
