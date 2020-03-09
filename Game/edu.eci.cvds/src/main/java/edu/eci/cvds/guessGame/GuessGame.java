@@ -76,7 +76,7 @@ public class GuessGame {
                     estado = "gano";
                 }
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Has Adivinado el Numero de la ronda anterior!, tu puntaje fue: ", " " + puntaje+ " y con una cantidad de " + intento + " intentos ;) El juego se Ha reiniciado "));
-                restart();
+                //restart();
             } else {
                 estado = "lo sentimos, vuelve a intentarlo";
             }
@@ -88,8 +88,9 @@ public class GuessGame {
         numero = new Random().nextInt(100);
         intento = 0;
         puntaje = 0;
-        perdidos = 100000;
+        perdidos = 10000;
         estado = "inicio";
+        intentos = new ArrayList<Integer> ();
 
     }
     public int getNumero() {

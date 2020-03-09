@@ -24,12 +24,13 @@ and open the template in the editor.
         
             <p:dataTable var="listintentos" value="#{guessBean.intentos}" style="width:250px;" styleClass = "Table" >
                 <p:column headerText="numero de intentos " >
-                    <h:outputText value= "#{guessBean.intento}" />
+                    <h:outputText value= "#{guessBean.intentos.indexOf(listintentos)+1}" />
                 </p:column>
                 <p:column headerText="numero ingresado"  >
-                    <h:outputText value= "#{guessBean.intentar}" />
+                    <h:outputText value= "#{listintentos}" />
                 </p:column>
             </p:dataTable>
+        <p:outputLabel  value="#{guessBean.estado}"></p:outputLabel>
         </h:form>
         
         
